@@ -19,5 +19,17 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::group(['prefix' => 'contacts'], function ( $route ) {
+    $route->get('/', 'ContactController@index')->name('contacts.index');
+    $route->get('/create', 'ContactController@create')->name('contacts.create');
+    $route->post('/create', 'ContactController@store')->name('contacts.store');
+
+    $route->group(['prefix' => '{contact}'], function ( $route ) {
+        $route->get('/', 'ContactController@show')->name('contacts.show');
+        $route->get('/edit', 'ContactController@edit')->name('contacts.edit');
+        $route->post('/edit', 'ContactController@update')->name('contacts.update');
+        $route->post('/delete', 'ContactController@destroy')->name('contacts.destroy');
+    });
+});
 
 Auth::routes();
