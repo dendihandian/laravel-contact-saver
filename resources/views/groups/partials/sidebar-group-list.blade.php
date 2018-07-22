@@ -4,7 +4,7 @@
     @foreach ($groups as $group)
       <a class="list-group-item list-group-item-action
       @if ($group->id === $currentGroup->id)
-        {{ 'active' }}
+        {{ 'bg-secondary text-light font-weight-bold' }}
       @endif
       " href="{{ route('groups.show', $group->id) }}">{{ $group->name }}</a>
     @endforeach
