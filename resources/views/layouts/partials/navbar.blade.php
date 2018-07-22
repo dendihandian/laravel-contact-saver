@@ -12,6 +12,7 @@
             <ul class="navbar-nav mr-auto">
               @auth
                 <li class="nav-item"><a href="{{ route('contacts.index') }}" class="nav-link">Contacts</a></li>
+                <li class="nav-item"><a href="{{ route('groups.index') }}" class="nav-link">Groups</a></li>
               @endauth
             </ul>
 

@@ -32,4 +32,16 @@ Route::group(['prefix' => 'contacts'], function ( $route ) {
     });
 });
 
+Route::group(['prefix' => 'groups'], function ( $route ) {
+    $route->get('/', 'GroupController@index')->name('groups.index');
+    // $route->get('/create', 'GroupController@create')->name('groups.create');
+
+    $route->group(['prefix' => '{group}'], function ( $route ) {
+        $route->get('/', 'GroupController@show')->name('groups.show');
+        // $route->get('/edit', 'GroupController@edit')->name('groups.edit');
+        // $route->post('/edit', 'GroupController@update')->name('groups.update');
+        // $route->post('/delete', 'GroupController@destroy')->name('groups.destroy');
+    });
+});
+
 Auth::routes();

@@ -11,8 +11,8 @@ class GroupsTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(App\Models\Group::class, 1)->create(['name' => 'Families']);
-        factory(App\Models\Group::class, 1)->create(['name' => 'Friends']);
-        factory(App\Models\Group::class, 1)->create(['name' => 'Other']);
+        factory(App\Models\Group::class, 1)->create(['name' => 'Families', 'owner_id' => null]);
+        factory(App\Models\Group::class, 1)->create(['name' => 'Friends', 'owner_id' => null]);
+        factory(App\Models\Group::class, 1)->create(['name' => 'Other', 'owner_id' => null]);
     }
 }
