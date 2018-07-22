@@ -19,7 +19,7 @@ class GroupController extends Controller
         //   ->orWhere('owner_id', auth()->user()->id)
         //   ->first();
 
-        return redirect()->route('groups.show', 1);
+        return redirect()->route('groups.show', 'families');
     }
 
     /**

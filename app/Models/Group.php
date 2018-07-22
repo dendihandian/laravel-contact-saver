@@ -10,4 +10,9 @@ class Group extends Model
       self::FAMILIES_GROUP_ID,
       self::FRIENDS_GROUP_ID,
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
 }

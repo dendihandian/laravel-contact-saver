@@ -6,7 +6,7 @@
       @if ($group->id === $currentGroup->id)
         {{ 'bg-secondary text-light font-weight-bold' }}
       @endif
-      " href="{{ route('groups.show', $group->id) }}">{{ $group->name }}</a>
+      " href="{{ route('groups.show', $group->slug) }}">{{ $group->name }}</a>
     @endforeach
   </ul>
 </div>
