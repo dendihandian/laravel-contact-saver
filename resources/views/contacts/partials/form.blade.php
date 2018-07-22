@@ -59,6 +59,21 @@
   </div>
 </div>
 <div class="form-group row">
+  <label for="groupInput" class="col-sm-2 col-form-label">Group</label>
+  <div class="col-sm-10">
+    <select class="form-control" id="groupInput" name="group">
+      <option disabled> -- </option>
+      @foreach ($groups as $group)
+        <option value="{{ $group->id }}"
+        @if ($group->id === $contact->group_id)
+          {{ 'selected' }}
+        @endif
+        >{{ $group->name }}</option>
+      @endforeach
+    </select>
+  </div>
+</div>
+<div class="form-group row">
   <div class="col-sm-12 text-center">
     <button type="submit" class="btn btn-primary">Save</button>
   </div>

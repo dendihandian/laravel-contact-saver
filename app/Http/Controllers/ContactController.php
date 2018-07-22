@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Group;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -25,7 +26,11 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('contacts.create');
+        $groups = Group::whereIn('id', Group::DEFAULT_GROUP_ID_ARRAY)
+          ->orWhere('owner_id', auth()->user()->id)
+          ->get();
+
+        return view('contacts.create', compact('groups'));
     }
 
     /**
@@ -40,7 +45,7 @@ class ContactController extends Controller
 
         $contact = new Contact;
         $contact->owner_id = auth()->user()->id;
-        $contact->group_id = null;
+        $contact->group_id = $input['group'];
         $contact->first_name = $input['first_name'];
         $contact->middle_name = $input['middle_name'];
         $contact->last_name = $input['last_name'];
@@ -71,7 +76,11 @@ class ContactController extends Controller
      */
     public function edit(Contact $contact)
     {
-        return view('contacts.edit', compact('contact'));
+        $groups = Group::whereIn('id', Group::DEFAULT_GROUP_ID_ARRAY)
+          ->orWhere('owner_id', auth()->user()->id)
+          ->get();
+
+        return view('contacts.edit', compact('contact', 'groups'));
     }
 
     /**
@@ -86,7 +95,7 @@ class ContactController extends Controller
         $input = $request->all();
 
         $contact->owner_id = auth()->user()->id;
-        $contact->group_id = null;
+        $contact->group_id = $input['group'];
         $contact->first_name = $input['first_name'];
         $contact->middle_name = $input['middle_name'];
         $contact->last_name = $input['last_name'];
