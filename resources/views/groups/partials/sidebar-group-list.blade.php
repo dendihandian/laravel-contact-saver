@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mb-4">
   <ul class="list-group">
       <li class="list-group-item bg-dark text-light font-weight-bold">Groups</li>
     @foreach ($groups as $group)

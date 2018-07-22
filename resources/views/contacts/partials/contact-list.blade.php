@@ -1,17 +1,17 @@
 <div class="container">
-  <div class="row justify-content-end">
+  <div class="row justify-content-end mb-4">
     <a href="{{ route('contacts.create') }}">
       <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp; Create New Contact</button>
     </a>
   </div>
-  <div class="row justify-content-center mt-4">
+  <div class="row justify-content-center">
     <table class="table table-bordered table-striped table-hover">
       <thead class="bg-dark text-light">
         <tr>
           <th scope="col">First</th>
           <th scope="col">Last</th>
           <th scope="col">Email</th>
-          <th scope="col" class="text-center">Actions</th>
+          <th scope="col" class="text-center" width="21%">Actions</th>
         </tr>
       </thead>
       <tbody class="">

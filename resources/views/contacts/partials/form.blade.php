@@ -79,26 +79,26 @@
 <div class="form-group row">
   <label for="groupInput" class="col-sm-2 col-form-label">Group</label>
   <div class="col-sm-10">
-    @if (isset($disableForms) && !$disableForms)
-      <select class="form-control" id="groupInput" name="group">
-        <option disabled> -- </option>
-        @foreach ($groups as $group)
-          <option value="{{ $group->id }}"
-            @if ($group->id === $contact->group_id)
-              {{ 'selected' }}
-            @endif
-            >{{ $group->name }}</option>
-          @endforeach
-        </select>
+    @if (!isset($disableForms))
+    <select class="form-control" id="groupInput" name="group">
+      <option disabled> -- </option>
+      @foreach ($groups as $group)
+        <option value="{{ $group->id }}"
+          @if (isset($group->id) && isset($contact->group_id) && $group->id === $contact->group_id)
+            {{ 'selected' }}
+          @endif
+          >{{ $group->name }}</option>
+      @endforeach
+    </select>
     @else
-      <input class="form-control" type="text" value="{{ $contact->group->name }}" disabled />
+      <input class="form-control" type="text" value="{{ $contact->address }}" disabled />
     @endif
   </div>
 </div>
-@if (isset($disableForms) && !$disableForms)
-  <div class="form-group row">
-    <div class="col-sm-12 text-center">
-      <button type="submit" class="btn btn-primary">Save</button>
-    </div>
+@if (!isset($disableForms))
+<div class="form-group row">
+  <div class="col-sm-12 text-center">
+    <button type="submit" class="btn btn-primary">Save</button>
   </div>
+</div>
 @endif
