@@ -19,7 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::group(['prefix' => 'contacts'], function ( $route ) {
+Route::group(['prefix' => 'contacts', 'middleware' => 'auth'], function ( $route ) {
     $route->get('/', 'ContactController@index')->name('contacts.index');
     $route->get('/create', 'ContactController@create')->name('contacts.create');
     $route->post('/create', 'ContactController@store')->name('contacts.store');
@@ -32,7 +32,7 @@ Route::group(['prefix' => 'contacts'], function ( $route ) {
     });
 });
 
-Route::group(['prefix' => 'groups'], function ( $route ) {
+Route::group(['prefix' => 'groups', 'middleware' => 'auth'], function ( $route ) {
     $route->get('/', 'GroupController@index')->name('groups.index');
     // $route->get('/create', 'GroupController@create')->name('groups.create');
 
