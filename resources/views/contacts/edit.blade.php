@@ -9,7 +9,7 @@
   </div>
   <div class="row justify-content-center mt-4">
     <div class="container">
-      <form class="" action="{{ route('contacts.update', $contact->id) }}" method="post">
+      <form class="" action="{{ route('contacts.update', $contact->id) }}" method="post" enctype="multipart/form-data">
         @csrf
         @include('contacts.partials.form');
       </form>

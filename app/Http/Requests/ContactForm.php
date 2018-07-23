@@ -31,6 +31,7 @@ class ContactForm extends FormRequest
             'email' => 'nullable|string|email',
             'phone' => 'nullable|string',
             'address' => 'nullable|string',
+            'photo' => 'nullable|file|image|dimensions:min_width=50,min_height=100|max:1024',
         ];
     }
 }

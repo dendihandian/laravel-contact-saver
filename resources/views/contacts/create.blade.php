@@ -9,7 +9,7 @@
   </div>
   <div class="row justify-content-center mt-4">
     <div class="container">
-      <form class="" action="{{ route('contacts.store') }}" method="post">
+      <form class="" action="{{ route('contacts.store') }}" method="post" enctype="multipart/form-data">
         @csrf
         @include('contacts.partials.form');
       </form>

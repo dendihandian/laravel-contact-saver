@@ -106,6 +106,12 @@
 </div>
 @if (!isset($disableForms))
 <div class="form-group row">
+  <label for="photo" class="col-sm-2 col-form-label">Photo</label>
+  <div class="col-sm-10">
+    <input type="file" class="form-control-file" id="photo" name="photo" />
+  </div>
+</div>
+<div class="form-group row">
   <div class="col-sm-12 text-center">
     <button type="submit" class="btn btn-primary">Save</button>
   </div>

@@ -11,7 +11,7 @@
       <div class="container">
         <form class="" action="{{ route('contacts.store') }}" method="post">
           @csrf
-          @include('contacts.partials.form');
+          @include('contacts.partials.form')
         </form>
       </div>
     </div>
