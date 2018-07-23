@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use App\Models\Group;
-use Illuminate\Http\Request;
+use App\Http\Requests\ContactForm;
 
 class ContactController extends Controller
 {
@@ -36,10 +36,10 @@ class ContactController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ContactForm  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ContactForm $request)
     {
         $input = $request->all();
 
@@ -87,11 +87,11 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ContactForm  $request
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Contact $contact)
+    public function update(ContactForm $request, Contact $contact)
     {
         $input = $request->all();
 
