@@ -116,6 +116,22 @@ class ContactController extends Controller
         $contact->email = $input['email'];
         $contact->phone = $input['phone'];
         $contact->address = $input['address'];
+
+        if($request->hasFile('photo')){
+
+            // TODO: delete old photo
+
+            // get photo filename
+            $photo = $request->file('photo');
+            $fileName = $photo->getClientOriginalName();
+            // set path or destination
+            $destination = public_path('uploads/' . auth()->user()->email);
+            // move photo to destination
+            $photo->move($destination, $fileName);
+            // assign photo to request data
+            $contact->photo = $fileName;
+        }
+
         $contact->save();
 
         return redirect()->route('contacts.index');
