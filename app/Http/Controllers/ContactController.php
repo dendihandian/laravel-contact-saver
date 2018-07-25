@@ -76,8 +76,13 @@ class ContactController extends Controller
      * @param  \App\Contact  $contact
      * @return \Illuminate\Http\Response
      */
-    public function show(Contact $contact)
+    public function show($contact)
     {
+        $contact = Contact::leftJoin('groups', 'contacts.group_id', '=', 'groups.id')
+          ->where('contacts.id', $contact)
+          ->select('contacts.*', 'groups.name as group')
+          ->first();
+
         $disableForms = true;
         return view('contacts.show', compact('contact', 'disableForms'));
     }
