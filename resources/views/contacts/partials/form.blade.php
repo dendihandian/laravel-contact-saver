@@ -100,7 +100,7 @@
       @endforeach
     </select>
     @else
-      <input class="form-control" type="text" value="{{ $contact->address }}" disabled />
+      <input class="form-control" type="text" value="{{ $contact->group->name }}" disabled />
     @endif
   </div>
 </div>
