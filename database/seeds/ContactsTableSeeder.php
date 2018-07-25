@@ -15,8 +15,8 @@ class ContactsTableSeeder extends Seeder
           'owner_id' => 1,
           'group_id' => \App\Models\Group::FAMILIES_GROUP_ID,
           'first_name' => 'Alfred',
-          'last_name' => 'Pennywise',
-          'email' => 'pennywise@wayne-enterprises.com',
+          'last_name' => 'Pennyworth',
+          'email' => 'pennyworth@wayne-enterprises.com',
         ]);
 
         factory(App\Models\Contact::class, 1)->create([
