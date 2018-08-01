@@ -8,6 +8,7 @@ use App\Models\SocialAccount;
 use App\User;
 use Socialite;
 use Auth;
+use Debugbar;
 
 class SocialAccountController extends Controller
 {
@@ -16,7 +17,7 @@ class SocialAccountController extends Controller
       return Socialite::driver($provider)->redirect();
     }
 
-    public function handleProviderCallback()
+    public function handleProviderCallback($provider)
     {
       try {
         $user = Socialite::driver($provider)->user();
@@ -33,13 +34,14 @@ class SocialAccountController extends Controller
 
     public function findOrCreateUser($socialUser, $provider)
     {
-      $account = SocialAccount::where('provider_name'. $provider)
-        ->where('provider_id', $socialUser->get())
+      $account = SocialAccount::where('provider_name', $provider)
+        ->where('provider_id', $socialUser->getId())
         ->first();
 
       if ($account) {
         return $account->user;
       } else {
+
         $user = User::where('email', $socialUser->getEmail())->first();
         if (! $user) {
           $user = User::create([
@@ -52,8 +54,9 @@ class SocialAccountController extends Controller
             'provider_id' => $socialUser->getId(),
           ]);
 
-          return $user;
         }
+
+        return $user;
       }
     }
 }
