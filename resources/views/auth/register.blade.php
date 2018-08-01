@@ -181,7 +181,7 @@
                   </a>
                   <a href="{{ url('login/github') }}" class="btn btn-social btn-github">
                     <i class="fab fa-github"></i>
-                    Login with Github
+                    Sign Up with Github
                   </a>
                 </div>
             </div>
