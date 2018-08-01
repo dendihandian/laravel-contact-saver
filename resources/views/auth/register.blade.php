@@ -180,6 +180,10 @@
                     Sign Up with Facebook
                   </a>
                 </div>
+                <a href="{{ url('login/github') }}" class="btn btn-social btn-github">
+                  <i class="fab fa-github"></i>
+                  Login with Github
+                </a>
             </div>
         </div>
     </div>
