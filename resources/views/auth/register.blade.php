@@ -179,11 +179,11 @@
                     <i class="fab fa-facebook-f"></i>
                     Sign Up with Facebook
                   </a>
+                  <a href="{{ url('login/github') }}" class="btn btn-social btn-github">
+                    <i class="fab fa-github"></i>
+                    Login with Github
+                  </a>
                 </div>
-                <a href="{{ url('login/github') }}" class="btn btn-social btn-github">
-                  <i class="fab fa-github"></i>
-                  Login with Github
-                </a>
             </div>
         </div>
     </div>
