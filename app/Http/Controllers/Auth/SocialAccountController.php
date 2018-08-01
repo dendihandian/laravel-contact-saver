@@ -8,7 +8,6 @@ use App\Models\SocialAccount;
 use App\User;
 use Socialite;
 use Auth;
-use Debugbar;
 
 class SocialAccountController extends Controller
 {
