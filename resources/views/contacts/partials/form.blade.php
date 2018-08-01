@@ -46,7 +46,11 @@
 <div class="form-group row">
   <label for="groupInput" class="col-sm-2 col-form-label">Group</label>
   <div class="col-sm-10">
-    {!! Form::select("group", $groups, null, ['class' => 'form-control', 'placeholder' => 'Select the contact group']) !!}
+    @if (isset($contact->group))
+      {!! Form::select("group", $groups, $contact->group->id, ['class' => 'form-control', 'placeholder' => 'Select the contact group']) !!}
+    @else
+      {!! Form::select("group", $groups, null, ['class' => 'form-control', 'placeholder' => 'Select the contact group']) !!}
+    @endif
   </div>
 </div>
 <div class="form-group row">
