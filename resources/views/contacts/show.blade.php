@@ -9,10 +9,7 @@
     </div>
     <div class="row justify-content-center mt-4">
       <div class="container">
-        <form class="" action="{{ route('contacts.store') }}" method="post">
-          @csrf
-          @include('contacts.partials.form')
-        </form>
+        <p>Well, we cannot use html collective for show</p>
       </div>
     </div>
   </div>

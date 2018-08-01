@@ -4,15 +4,19 @@
 <div class="container">
   <div class="row justify-content-sm-start">
     <a href="{{ route('contacts.index') }}">
-      <button class="btn btn-sm btn-warning"><i class="fas fa-backward"></i> Back To Contact List</button>
+      <button class="btn btn-sm btn-warning"><i class="fas fa-backward"></i>&nbsp; Back To Contact List</button>
     </a>
   </div>
   <div class="row justify-content-center mt-4">
     <div class="container">
-      <form class="" action="{{ route('contacts.update', $contact->id) }}" method="post" enctype="multipart/form-data">
-        @csrf
-        @include('contacts.partials.form');
-      </form>
+      {!! Form::model($contact, ['route' => ['contacts.update', $contact->id], 'files' => true]) !!}
+      @include('contacts.partials.form')
+      <div class="form-group row">
+        <div class="col-sm-12 text-center">
+          {!! Form::submit('Update', ['class' => 'btn btn-primary']) !!}
+        </div>
+      </div>
+      {!! Form::close() !!}
     </div>
   </div>
 </div>

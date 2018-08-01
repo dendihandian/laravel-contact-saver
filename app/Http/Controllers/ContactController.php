@@ -26,9 +26,14 @@ class ContactController extends Controller
      */
     public function create()
     {
-        $groups = Group::whereIn('id', Group::DEFAULT_GROUP_ID_ARRAY)
+        $userGroups = Group::whereIn('id', Group::DEFAULT_GROUP_ID_ARRAY)
           ->orWhere('owner_id', auth()->user()->id)
           ->get();
+
+        $groups = [];
+        foreach($userGroups as $group) {
+            $groups[$group->id] = $group->name;
+        }
 
         return view('contacts.create', compact('groups'));
     }

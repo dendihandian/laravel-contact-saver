@@ -9,10 +9,14 @@
   </div>
   <div class="row justify-content-center mt-4">
     <div class="container">
-      <form class="" action="{{ route('contacts.store') }}" method="post" enctype="multipart/form-data">
-        @csrf
-        @include('contacts.partials.form');
-      </form>
+      {!! Form::open(['route' => 'contacts.store', 'files' => true]) !!}
+      @include('contacts.partials.form')
+      <div class="form-group row">
+        <div class="col-sm-12 text-center">
+          {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
+        </div>
+      </div>
+      {!! Form::close() !!}
     </div>
   </div>
 </div>
