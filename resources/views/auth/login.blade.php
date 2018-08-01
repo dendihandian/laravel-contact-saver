@@ -168,8 +168,8 @@
                         </div>
                     </form>
                 </div><!-- .card-body -->
-                <div class="card-footer">
-                  <a href="{{ url('login/facebook') }}" class="btn btn-social btn-facebook">
+                <div class="card-footer d-flex justify-content-center">
+                  <a href="{{ url('login/facebook') }}" class="btn btn-social btn-facebook mr-1">
                     <i class="fab fa-facebook-f"></i>
                     Login with Facebook
                   </a>
