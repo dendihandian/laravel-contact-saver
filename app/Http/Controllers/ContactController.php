@@ -58,16 +58,17 @@ class ContactController extends Controller
         $contact->phone = $input['phone'];
         $contact->address = $input['address'];
 
-        if($request->hasFile('photo')){
-            // get photo filename
-            $photo = $request->file('photo');
-            $fileName = $photo->getClientOriginalName();
-            // set path or destination
-            $destination = public_path('uploads/' . auth()->user()->email);
-            // move photo to destination
-            $photo->move($destination, $fileName);
-            // assign photo to request data
-            $contact->photo = $fileName;
+        if ($request->hasFile('photo')){
+            $file = $request->file('photo'); // become encoded file, use File::get($file) to get unencoded file ...
+            $filename = uniqid(auth()->user()->id . "_") . "." . $file->getClientOriginalExtension();
+            \Storage::disk('public')->put($filename, \File::get($file));
+            $contact->photo = $filename;
+
+            // $thumb = \Image::make(\File::get($file));
+            // $thumb->fit(200);
+            // $jpg = $thumb->encode('jpg');
+            // $thumbName = pathinfo($filename, PATHINFO_FILENAME) . '-thumb.jpg';
+            // \Storage::disk('public')->put($thumbName, \File::get($jpg));
         }
 
         $contact->save();
@@ -132,19 +133,11 @@ class ContactController extends Controller
         $contact->phone = $input['phone'];
         $contact->address = $input['address'];
 
-        if($request->hasFile('photo')){
-
-            // TODO: delete old photo
-
-            // get photo filename
-            $photo = $request->file('photo');
-            $fileName = $photo->getClientOriginalName();
-            // set path or destination
-            $destination = public_path('uploads/' . auth()->user()->email);
-            // move photo to destination
-            $photo->move($destination, $fileName);
-            // assign photo to request data
-            $contact->photo = $fileName;
+        if ($request->hasFile('photo')){
+            $file = $request->file('photo'); // become encoded file, use File::get($file) to get unencoded file ...
+            $filename = uniqid(auth()->user()->id . "_") . "." . $file->getClientOriginalExtension();
+            \Storage::disk('public')->put($filename, \File::get($file));
+            $contact->photo = $filename;
         }
 
         $contact->save();
