@@ -1,5 +1,5 @@
 <div class="container">
-  <div class="row justify-content-end mb-4">
+  <div class="row justify-content-center justify-content-sm-end mb-4">
     <a href="{{ route('contacts.create') }}">
       <button class="btn btn-sm btn-primary"><i class="fas fa-plus"></i>&nbsp; Create New Contact</button>
     </a>
