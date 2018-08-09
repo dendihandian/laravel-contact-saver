@@ -59,9 +59,12 @@ class ContactController extends Controller
         $contact->address = $input['address'];
 
         if ($request->hasFile('photo')){
+            // store photo
             $file = $request->file('photo'); // become encoded file, use File::get($file) to get unencoded file ...
             $filename = uniqid(auth()->user()->id . "_") . "." . $file->getClientOriginalExtension();
             \Storage::disk('public')->put($filename, \File::get($file));
+
+            // set photo filename to contact
             $contact->photo = $filename;
 
             // $thumb = \Image::make(\File::get($file));
@@ -71,6 +74,7 @@ class ContactController extends Controller
             // \Storage::disk('public')->put($thumbName, \File::get($jpg));
         }
 
+        // save contact
         $contact->save();
 
         return redirect()->route('contacts.index');
@@ -134,12 +138,19 @@ class ContactController extends Controller
         $contact->address = $input['address'];
 
         if ($request->hasFile('photo')){
+            // delete old photo
+            \Storage::disk('public')->delete($contact->photo);
+
+            // store new photo
             $file = $request->file('photo'); // become encoded file, use File::get($file) to get unencoded file ...
             $filename = uniqid(auth()->user()->id . "_") . "." . $file->getClientOriginalExtension();
             \Storage::disk('public')->put($filename, \File::get($file));
+
+            // set new photo filename to contact
             $contact->photo = $filename;
         }
 
+        // save contact
         $contact->save();
 
         return redirect()->route('contacts.index');
@@ -153,7 +164,12 @@ class ContactController extends Controller
      */
     public function destroy(Contact $contact)
     {
+        // delete photo file
+        \Storage::disk('public')->delete($contact->photo);
+
+        // delete contact
         $contact->delete();
+
         return redirect()->route('contacts.index');
     }
 }
