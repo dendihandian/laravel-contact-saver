@@ -23,9 +23,9 @@
             <td scope="row">{{ $contact->email }}</td>
             <td scope="row" class="text-center">
               <nav class="nav justify-content-center">
-                <a href="{{ route('contacts.show', $contact->id) }}" class="nav-link text-dark pt-0 pb-0"><i class="fas fa-eye"></i></a>
-                <a href="{{ route('contacts.edit', $contact->id) }}" class="nav-link text-dark pt-0 pb-0"><i class="fas fa-edit"></i></a>
-                <a href="{{ route('contacts.destroy', $contact->id) }}" class="nav-link text-dark pt-0 pb-0" onclick="event.preventDefault();document.getElementById('delete-contact-form-{{$contact->id}}').submit();"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ route('contacts.show', $contact->id) }}" class="nav-link text-dark pt-0 pb-0"><i class="fas fa-eye text-info"></i></a>
+                <a href="{{ route('contacts.edit', $contact->id) }}" class="nav-link text-dark pt-0 pb-0"><i class="fas fa-edit text-success"></i></a>
+                <a href="{{ route('contacts.destroy', $contact->id) }}" class="nav-link text-dark pt-0 pb-0" onclick="event.preventDefault();document.getElementById('delete-contact-form-{{$contact->id}}').submit();"><i class="fas fa-trash-alt text-danger"></i></a>
                 <form id="delete-contact-form-{{$contact->id}}" action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: none;">
                   @csrf
                 </form>
