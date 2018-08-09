@@ -34,7 +34,9 @@ class GroupController extends Controller
             ->orWhere('owner_id', auth()->user()->id)
             ->get();
 
-        $contacts = Contact::where('group_id', $group->id)->get();
+        $contacts = Contact::where('group_id', $group->id)
+          ->where('owner_id', auth()->user()->id)
+          ->get();
 
         $currentGroup = $group;
 
