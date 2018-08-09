@@ -15,10 +15,11 @@
             <a href="{{ route('contacts.edit', $contact->id ) }}">
               <button class="btn btn-success btn-sm">Edit</button>
             </a>
-            <a href="{{ route('contacts.destroy', $contact->id ) }}">
-              <button class="btn btn-danger btn-sm">Delete</button>
-            </a>
+            <button class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModal">Delete</button>
           </div>
+          <form id="delete-contact-form-{{$contact->id}}" action="{{ route('contacts.destroy', $contact->id) }}" method="POST" style="display: none;">
+            @csrf
+          </form>
         </div>
       </div>
       <div class="card-body container row">
@@ -70,6 +71,24 @@
               <input type="text" readonly class="form-control-plaintext font-weight-bold" value="{{ $contact->address }}">
             </div>
           </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Delete Confirmation Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-light">
+          <h5 class="modal-title" id="exampleModalLabel">Delete Confirmation</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">Are you sure want to delete '{{ $contact->last_name }}' contact?</div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-contact-form-{{$contact->id}}').submit();">Yes</button>
         </div>
       </div>
     </div>
