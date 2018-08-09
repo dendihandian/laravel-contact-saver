@@ -42,7 +42,7 @@
                       <span aria-hidden="true">&times;</span>
                     </button>
                   </div>
-                  <div class="modal-body">Are you sure want to delete '{{ $contact->last_name }}' contact?</div>
+                  <div class="modal-body">Are you sure want to delete '<span class="font-weight-bold">'{{ $contact->last_name }}</span>' contact?</div>
                   <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
                     <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-contact-form-{{$contact->id}}').submit();">Yes</button>

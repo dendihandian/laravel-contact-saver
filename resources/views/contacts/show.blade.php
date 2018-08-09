@@ -7,7 +7,7 @@
         <button class="btn btn-sm btn-warning"><i class="fas fa-backward"></i>&nbsp; Back To Contact List</button>
       </a>
     </div>
-    <div class="card mt-4 row">
+    <div class="card mt-4 row border border-dark">
       <div class="card-header bg-dark text-light">
         <div class="d-flex justify-content-between">
           <div>Contact Information</div>
@@ -51,6 +51,12 @@
               <input type="text" readonly class="form-control-plaintext font-weight-bold" value="{{ $contact->last_name }}" />
             </div>
           </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Added</label>
+            <div class="col-sm-8">
+              <input type="text" readonly class="form-control-plaintext font-weight-bold" value="{{ $contact->created_at->diffForHumans() }}" />
+            </div>
+          </div>
         </div>
         <div class="col-sm-12 col-md-4 pt-3">
           <div class="form-group row">
@@ -71,6 +77,12 @@
               <input type="text" readonly class="form-control-plaintext font-weight-bold" value="{{ $contact->address }}">
             </div>
           </div>
+          <div class="form-group row">
+            <label class="col-sm-4 col-form-label">Last Updated</label>
+            <div class="col-sm-8">
+              <input type="text" readonly class="form-control-plaintext font-weight-bold" value="{{ $contact->updated_at->diffForHumans() }}" />
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -85,7 +97,9 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <div class="modal-body">Are you sure want to delete '{{ $contact->last_name }}' contact?</div>
+        <div class="modal-body">
+          <p>Are you sure want to delete <span class="font-weight-bold">'{{ $contact->last_name }}'</span> contact?</p>
+        </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
           <button type="button" class="btn btn-danger" onclick="event.preventDefault();document.getElementById('delete-contact-form-{{$contact->id}}').submit();">Yes</button>
